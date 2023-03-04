@@ -1,9 +1,9 @@
-package month1.week1.day3;
+package practice.stage1;
 
 import java.util.Scanner;
 
 /**
- * @Description 需求请看同级目录下的pdf
+ * @Description 第1个月第1周第3天的作业4
  * @Author MinjieZhang
  * @Date 2023-03-01 15:48
  */
