@@ -1,7 +1,5 @@
 package month1.week2.day4;
 
-import org.junit.Test;
-
 /**
  * 使用alt + insert快捷键可以快速生成各种类中结构。子类继承父类后，在子类中按alt + insert快捷键快速创建构造方法时，
  * 第一步会让你选择父类构造器（也就是super(参数)）随后才是选择子类自身的成员变量，生成子类构造器。

@@ -1,7 +1,5 @@
 package month1.week2.day1;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 /**
  * 编写一个类模拟银行账户（Account）的功能，包含的属性有"账户名（ID）"、"密码"、"账户余额"、"储蓄年利率"等。 其中：
  * 账号名：要求每个账户的账户名都是唯一的，且按照固定格式自动生成：

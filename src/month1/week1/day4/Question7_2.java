@@ -1,7 +1,5 @@
 package month1.week1.day4;
 
-import com.sun.org.apache.xpath.internal.operations.Equals;
-
 import java.util.Scanner;
 
 /**

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/homework.iml" filepath="$PROJECT_DIR$/homework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Practice1_GUI学生管理系统/GUI-stage1说明文档/manager-gui2-student/manager-gui2-student.iml" filepath="$PROJECT_DIR$/Practice1_GUI学生管理系统/GUI-stage1说明文档/manager-gui2-student/manager-gui2-student.iml" />
     </modules>
   </component>
 </project>

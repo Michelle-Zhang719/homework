@@ -1,7 +1,5 @@
 package month1.week2.day1;
 
-import static jdk.nashorn.internal.objects.Global.print;
-
 /**
  * 定义一个Student类：
  * 成员变量：String name，int stuId，String gender，int age，double score（表示学生Java考试成绩）

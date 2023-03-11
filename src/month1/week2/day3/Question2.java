@@ -1,7 +1,5 @@
 package month1.week2.day3;
 
-import java.util.Scanner;
-
 /**
  * 定义一个银行账户类Account, 3个属性, 用户名, 密码, 余额.
  * 使用Getter/Setter方法实现以下功能:

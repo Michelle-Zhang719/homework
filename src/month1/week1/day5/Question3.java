@@ -1,7 +1,5 @@
 package month1.week1.day5;
 
-import sun.security.acl.WorldGroupImpl;
-
 /**
  * 对于任意两个字符串对象的引用str1，str2。
  * 怎么判断这两个字符串对象的内容相同呢？

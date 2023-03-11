@@ -1,6 +1,5 @@
 package month1.week1.day4;
 
-import javax.swing.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
