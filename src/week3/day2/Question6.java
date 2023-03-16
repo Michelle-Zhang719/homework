@@ -1,5 +1,7 @@
 package week3.day2;
 
+import java.util.Objects;
+
 /**
  * equals方法语法编程练习题
  * 定义一个Animal类
@@ -8,6 +10,7 @@ package week3.day2;
  * 手写它的equals方法，比较getClass和instanceof的区别
  * <p>
  * 答：
+ * 重写equals方法时，哈希方法也要同时重写！！！
  * 1.getClass判断,利用Class对象唯一的特点进行判断
  * 选择这种排它性校验,是非常严格的
  * 必须是同种数据类型才可以继续比较
@@ -78,6 +81,16 @@ class Animal {
         return price == target.price;
     }
 
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = age;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
 }
 
 class AnimalSon extends Animal {
