@@ -47,14 +47,10 @@ class DownloadThread implements Runnable {
         try {
             while (true) {
                 synchronized (LOCK) {
-                    byte[] bytes = new byte[10 * 1024];
+                    byte[] bytes = new byte[5 * 1024];
                     int readCount;
                     if (surplusYield > 0) {
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+
                         readCount = in.read(bytes);
                         out.write(bytes, 0, readCount);
                         surplusYield -= readCount;

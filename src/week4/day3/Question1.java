@@ -1,8 +1,5 @@
 package week4.day3;
 
-import java.io.File;
-import java.io.ObjectOutput;
-
 /**
  * 用多线程代码来模拟，迅雷用3个线程下载100M资源的的过程。
  * 每个线程每次执行都下载1兆(M)资源，直到下载完毕，即剩余的待下载资源大小为0
