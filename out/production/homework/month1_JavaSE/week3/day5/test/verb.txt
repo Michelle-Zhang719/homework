@@ -1,5 +1,0 @@
-
-verb:eat
-verb:drink
-verb:sleep
-verb:play

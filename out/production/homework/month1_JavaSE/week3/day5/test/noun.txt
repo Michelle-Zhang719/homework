@@ -1,4 +1,0 @@
-noun:rice
-noun:meat
-noun:hand
-noun:hair
