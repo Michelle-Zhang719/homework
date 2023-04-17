@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <!--1, 在我们以前html作业的基础上, 实现注册页面功能:-->
+        <!--a,点击"看不清换一张", 会切换图片 (可以用我切好的这几个图片)-->
+        <!--b,点击立即注册找好友, 会判断(能alert一下)输入的验证码和当前图片代表的验证码是否一致-->
+    </head>
+    <body>
+        <hr>
+
+        <table Cellpadding="5px">
+            <tr>
+                <td>注册邮箱：</td>
+                <td><input></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>你还可以手机注册</td>
+            </tr>
+            <tr>
+                <td>创建密码：</td>
+                <td><input type="password"></td>
+            </tr>
+            <tr>
+                <td>真实姓名：</td>
+                <td><input></td>
+            </tr>
+            <tr>
+                <td align="right">性别：</td>
+                <td><input type="radio"/>男 <input type="radio">女</td>
+            </tr>
+            <tr>
+                <td align="right">生日：
+                </td>
+                <td>
+                    <select>
+                        <option selected="2001">2001</option>
+                    </select>年
+                    <select>
+                        <option selected="01">01</option>
+                        <option>02</option>
+                    </select>月
+                    <select>
+                        <option selected="01">01</option>
+                    </select>日
+                </td>
+            </tr>
+            <tr>
+                <td align="right">我正在：</td>
+                <td>
+                    <select>
+                        <option selected="睡觉">睡觉</option>
+                        <option>吃饭</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td onclick="changeimg()">
+                    <img id="getimg" src="bnksu.png" alt="图片加载失败....">
+                    看不清，换一张
+                </td>
+            </tr>
+            <tr>
+                <td align="right">验证码：</td>
+                <td><input id="inputcode"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td onclick="register()"><img src="btn_reg.gif" alt="图片加载失败...."></td>
+            </tr>
+        </table>
+
+        <script>
+            var tag = -1
+
+            function changeimg() {
+                //改变图片
+                var list = ["1111.png", "1234.png", "2222.png", "3333.png", "4567.png"];
+
+                var index = Math.floor(Math.random() * list.length)
+                while (index == tag) {
+                    // 说明改变图片一样
+                    index = Math.floor(Math.random() * list.length)
+                }
+                tag = index;
+
+                //获取当前图片路径
+                var img = document.getElementById("getimg");
+                //更改路径
+                img.src = list[index];
+            }
+
+            function register() {
+                // 获取用户输入的验证码
+                var inputcode = document.getElementById("inputcode").value
+                // 获取图片的名字
+                var img = document.getElementById("getimg");
+                var res = img.src.split("/");
+
+                if (inputcode + ".png" === res[res.length - 1]) {
+                    alert("输入正确！")
+                } else {
+                    alert("输入错误")
+                }
+            }
+        </script>
+
+    </body>
+</html>

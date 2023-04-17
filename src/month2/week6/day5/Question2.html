@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <!--实现汇率换算页面:-->
+        <!--a, 点击互换按钮, 能换互换前后两个select货币的选中状态-->
+        <!--b, 点击按汇率换算能得到汇率换算结果(展示到下面表格table里)-->
+        <!--提示:-->
+        <!--var listRate = [1, 0.9, 100, 8, 1000, 0.000016]-->
+        <!--var listMoney = ['美元', '欧元', '日元', '港元', '韩元', '比特币']-->
+        <style>
+
+            td {
+                width: 200px;
+                text-align: center;
+                height: 30px;
+            }
+
+            .td11 {
+                background: red;
+            }
+
+            select {
+                height: 30px;
+            }
+
+            button {
+                height: 30px;
+            }
+
+            input {
+                height: 24px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div>
+            <select id="op1">
+                <option>美元</option>
+                <option>人民币</option>
+                <option>欧元</option>
+                <option>日元</option>
+                <option>港元</option>
+                <option>韩元</option>
+                <option>比特币</option>
+            </select>
+            <button onclick="change()">互换</button>
+            <select id="op2">
+                <option>人民币</option>
+                <option>美元</option>
+                <option>欧元</option>
+                <option>日元</option>
+                <option>港元</option>
+                <option>韩元</option>
+                <option>比特币</option>
+            </select>
+            <span>数额:</span>
+            <input id="money">
+            <button onclick="clacmoney()">汇率换算</button>
+        </div>
+
+        <table border="1">
+            <tr>
+                <td class="td11" colspan="3">按当前汇率兑换结果</td>
+            </tr>
+            <tr>
+                <td id="td11">美元</td>
+                <td>汇率</td>
+                <td id="td13">人民币</td>
+            </tr>
+            <tr>
+                <td id="td21">100</td>
+                <td id="td22">6</td>
+                <td id="td23">600</td>
+            </tr>
+        </table>
+
+        <script>
+            function change() {
+                //互换币种
+                //获取当前币种
+                var op1 = document.getElementById("op1");
+                var op2 = document.getElementById("op2");
+
+                var index1 = op1.selectedIndex//获取选中的option的角标
+                var index2 = op2.selectedIndex//获取选中的option的角标
+                // var value=op1.options[index].value//获取option的值
+                // var text=op1.options[index].text//获取option的文本内容
+                var value1 = op1.options[index1].value//获取option的值
+                var value2 = op2.options[index2].value//获取option的值
+
+
+                op1.options[index1].innerText = value2
+                op2.options[index2].innerText = value1
+
+                console.log(value1)
+                console.log(value2)
+            }
+
+            function clacmoney() {
+                //拿到换算的钱数
+                var moneynum = document.getElementById("money").value
+                //拿到币种
+                var select1Value = document.getElementById("op1").value
+                var select2Value = document.getElementById("op2").value
+
+                // 计算汇率？？？？
+                console.log(moneynum)
+                console.log(select1Value)
+
+                document.getElementById("td11").innerText = select1Value
+                document.getElementById("td13").innerText = select2Value
+                document.getElementById("td21").innerText = moneynum
+                // document.getElementById("td22").innerText = rate
+                // document.getElementById("td23").innerText = inputValue * rate
+
+
+            }
+        </script>
+
+    </body>
+</html>
