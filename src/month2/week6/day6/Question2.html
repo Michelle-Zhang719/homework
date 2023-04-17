@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <!--通过Vue操作实现如下: 点名操作页面-->
+        <!-- 导入 Vue语法   -->
+        <script src="vue.js"></script>
+        <style>
+            #div-f {
+                width: 150px;
+                height: 500px;
+                margin: 200px auto 0;
+            }
+
+            #div1 {
+                width: 100px;
+                height: 100px;
+                background: red;
+                border-radius: 5px;
+                text-align: center;
+                line-height: 100px;
+                font-size: 25px;
+                margin: 200px auto 0;
+                color: white;
+            }
+
+            #div2 {
+                width: 100px;
+                margin: 20px auto;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="div-f">
+            <div id="div1">
+                {{name}}
+            </div>
+            <div id="div2">
+                <button v-on:click="getname">点名</button>
+            </div>
+        </div>
+
+
+        <script>
+            new Vue({
+                el: "#div-f",
+                data: {
+                    namelist: ["zs", "ls", "wu", "zl"],
+                    index: -1,
+                    tag: -1,
+                    name: "开始"
+                },
+                methods: {
+                    getname: function () {
+                        console.log(this.index);
+                        this.index = Math.floor(Math.random() * this.namelist.length)
+                        while (this.index == this.tag) {
+                            // 说明和上次点的同学是一个人
+                            this.index = Math.floor(Math.random() * this.namelist.length)
+                        }
+
+                        this.tag = this.index;
+                        this.name = this.namelist[this.tag]
+                        console.log(this.name);
+
+                    }
+                }
+            })
+
+            // var tag = -1
+            //
+            // function getname() {
+            //
+            //     var list = ["zs", "ls", "wu", "zl"];
+            //
+            //     var index = Math.floor(Math.random() * list.length)
+            //     while (index == tag){
+            //         // 说明和上次点的同学是一个人
+            //         index = Math.floor(Math.random() * list.length)
+            //     }
+            //
+            //     tag = index;
+            //     var divNode = document.getElementById('div1');
+            //
+            //     divNode.innerHTML = "<i>" + list[index] + "</i>"
+            // }
+
+        </script>
+
+    </body>
+</html>

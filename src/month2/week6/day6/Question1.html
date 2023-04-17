@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <!--通过Vue操作实现如下:在我们以前html作业的基础上, 实现注册页面功能:-->
+        <!--a,点击"看不清换一张", 会切换图片 (可以用我切好的这几个图片)-->
+        <!--b,点击立即注册找好友, 会判断(能alert一下)输入的验证码和当前图片代表的验证码是否一致-->
+
+        <!-- 导入 Vue语法   -->
+        <script src="vue.js"></script>
+    </head>
+    <body>
+
+        <table id="table" cellspacing="12">
+            <tr>
+                <td>注册邮箱:</td>
+                <td><input></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>你还可以手机注册</td>
+            </tr>
+            <tr>
+                <td>创建密码:</td>
+                <td><input></td>
+            </tr>
+            <tr>
+                <td>真实姓名:</td>
+                <td><input></td>
+            </tr>
+            <tr>
+                <td align="right">性别:</td>
+                <td>
+                    <input type="radio">男
+                    <input type="radio">女
+                </td>
+            </tr>
+            <tr>
+                <td align="right">生日:</td>
+                <td>
+                    <select id="selecty" onchange="changeday()">
+                        <option>2001</option>
+                    </select>年
+                    <select id="selectm" onchange="changeday()">
+                        <option>01</option>
+                    </select>月
+                    <select id="selectd">
+                        <option>01</option>
+                    </select>日
+                </td>
+            </tr>
+            <tr>
+                <td align="right">我正在:</td>
+                <td>
+                    <select>
+                        <option>学习</option>
+                        <option>上课</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <img v-bind:src="url"> &nbsp; <span v-on:click="changeimg">看不清,换一张</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">验证码:</td>
+                <td><input v-model:value="inputstr"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td v-on:click="getcode">
+                    <img src="btn_reg.gif">
+                </td>
+            </tr>
+        </table>
+
+        <script>
+            new Vue({
+                el: "#table",
+                data: {
+                    url: "verycode.gif",
+                    imglist: ["1111.png", "1234.png", "2222.png", "3333.png", "4567.png", "verycode.gif"],
+                    codelist: ["1111", "1234", "2222", "3333", "4567", "bnksu"],
+                    tag: -1,
+                    index: -1,
+
+                    //开始验证输入的验证码
+                    inputstr: ""
+                },
+                methods: {
+                    //修改图片
+                    changeimg: function () {
+                        console.log(this.url);
+                        this.index = Math.floor(Math.random() * this.imglist.length);
+                        while (this.index === this.tag) {
+                            index = Math.floor(Math.random() * this.imglist.length);
+                        }
+                        this.tag = this.index;
+                        this.url = this.imglist[this.index]
+                    },
+                    //校对验证码
+                    getcode: function () {
+                        console.log(this.inputstr);
+                        if (this.tag == -1) {
+
+                            if (this.inputstr == "bnksu") {
+                                alert("验证码正确")
+                            } else {
+                                alert("验证码错误")
+                            }
+                            return;
+                        }
+                        if (this.inputstr == this.codelist[this.tag]) {
+                            alert("验证码正确")
+                        } else {
+                            alert("验证码错误")
+                        }
+
+                    }
+                }
+
+            })
+        </script>
+
+        <!--        <script>-->
+
+        <!--            // 谁来存储数据?(js)-->
+        <!--            // 谁来处理数据?(java)-->
+
+        <!--            var listImg = ["1111.png", "1234.png", "2222.png", "3333.png", "4567.png"];-->
+        <!--            var listCode = ["1111", "1234", "2222", "3333", "4567"];-->
+        <!--            var tag = -1;-->
+
+        <!--            function changeimg() {-->
+        <!--                var imgNode = document.getElementById("img1")-->
+        <!--                var index = Math.floor(Math.random() * listImg.length)-->
+        <!--                while (index == tag) {-->
+        <!--                    index = Math.floor(Math.random() * listImg.length)-->
+        <!--                }-->
+        <!--                tag = index;-->
+        <!--                imgNode.src = listImg[index]-->
+        <!--            }-->
+
+        <!--            function getcode() {-->
+        <!--                // var imgNode = document.getElementById("img1")-->
+        <!--                // console.log(imgNode.src )-->
+        <!--                // console.log(listImg[tag])-->
+        <!--                // console.log(listCode[tag])-->
+
+        <!--                var inputstr = document.getElementById("inputstr").value-->
+
+        <!--                if (tag == -1) {-->
+
+        <!--                    if (inputstr == "bnksu") {-->
+        <!--                        alert("验证码正确")-->
+        <!--                    } else {-->
+        <!--                        alert("验证码错误")-->
+        <!--                    }-->
+
+        <!--                    return;-->
+        <!--                }-->
+
+        <!--                if (inputstr == listCode[tag]) {-->
+        <!--                    alert("验证码正确")-->
+        <!--                } else {-->
+        <!--                    alert("验证码错误")-->
+        <!--                }-->
+
+        <!--            }-->
+
+
+        <!--            // 初始化年月日-->
+        <!--            function init() {-->
+        <!--                var selectYNode = document.getElementById("selecty")-->
+        <!--                selectYNode.innerText = "";-->
+        <!--                for (var i = 2023; i >= 1949; i&#45;&#45;) {-->
+        <!--                    var optionNode = document.createElement("option")-->
+        <!--                    optionNode.innerText = i-->
+        <!--                    selectYNode.appendChild(optionNode)-->
+        <!--                }-->
+
+        <!--                // 月-->
+        <!--                var selectMNode = document.getElementById("selectm")-->
+        <!--                selectMNode.innerText = "";-->
+        <!--                for (var i = 1; i <= 12; i++) {-->
+        <!--                    var str = "";-->
+        <!--                    if (i < 10) {-->
+        <!--                        str = "0" + i;-->
+        <!--                    } else {-->
+        <!--                        str = i;-->
+        <!--                    }-->
+        <!--                    var optionNode = document.createElement("option")-->
+        <!--                    optionNode.innerText = str-->
+        <!--                    selectMNode.appendChild(optionNode)-->
+        <!--                }-->
+
+        <!--                // 日-->
+        <!--                var selectDNode = document.getElementById("selectd")-->
+        <!--                selectDNode.innerText = "";-->
+        <!--                for (var i = 1; i <= 31; i++) {-->
+        <!--                    var str = "";-->
+        <!--                    if (i < 10) {-->
+        <!--                        str = "0" + i;-->
+        <!--                    } else {-->
+        <!--                        str = i;-->
+        <!--                    }-->
+        <!--                    var optionNode = document.createElement("option")-->
+        <!--                    optionNode.innerText = str-->
+        <!--                    selectDNode.appendChild(optionNode)-->
+        <!--                }-->
+        <!--            }-->
+
+        <!--            init()-->
+
+        <!--            function changeday() {-->
+        <!--                var selectY = document.getElementById("selecty").value-->
+        <!--                var selectM = document.getElementById("selectm").value-->
+
+        <!--                // console.log(selectYNode.value)-->
+        <!--                // console.log(selectMNode.value)-->
+
+
+        <!--                if (selectM == "01" || selectM == "03" || selectM == "05" || selectM == "07"-->
+        <!--                    || selectM == "08" || selectM == "10" || selectM == "12") {-->
+        <!--                    // 31-->
+        <!--                    dealDay(31);-->
+        <!--                } else if (selectM == "04" || selectM == "06" || selectM == "09"-->
+        <!--                    || selectM == "11") {-->
+        <!--                    // 30天-->
+        <!--                    dealDay(30);-->
+        <!--                } else {-->
+        <!--                    // 2月-->
+        <!--                    if (selectY % 4 == 0) {-->
+        <!--                        // 闰年: 29-->
+        <!--                        dealDay(29);-->
+        <!--                    } else {-->
+        <!--                        // 非闰年: 28-->
+        <!--                        dealDay(28);-->
+        <!--                    }-->
+        <!--                }-->
+        <!--            }-->
+
+        <!--            function dealDay(index) {-->
+        <!--                var selectDNode = document.getElementById("selectd")-->
+        <!--                selectDNode.innerText = "";-->
+        <!--                for (var i = 1; i <= index; i++) {-->
+        <!--                    var str = "";-->
+        <!--                    if (i < 10) {-->
+        <!--                        str = "0" + i;-->
+        <!--                    } else {-->
+        <!--                        str = i;-->
+        <!--                    }-->
+        <!--                    var optionNode = document.createElement("option")-->
+        <!--                    optionNode.innerText = str-->
+        <!--                    selectDNode.appendChild(optionNode)-->
+        <!--                }-->
+        <!--            }-->
+
+        <!--        </script>-->
+    </body>
+</html>
