@@ -1,0 +1,34 @@
+﻿思考题：设置Tomcat:   通过ip地址就可以直接访问到某个 png图片文件，应该如何设置？
+参考答案：
+https://blog.csdn.net/Caofuqiang_521/article/details/102967312
+
+我的答案：
+一：相关步骤：
+
+1、解决不加端口问题
+进入tomcat配置文件conf中的service.xml中修改一下配置。
+
+  <Connector port="80" protocol="HTTP/1.1"
+         connectionTimeout="20000"
+          redirectPort="8443" />
+2、添加虚拟映射----不加项目名
+在tomcat的配置文件conf中的service.xml中的host标签里修改配置
+
+ <Context path="" docBase="/D:\WangDao\tomcattest" debug="0"/>
+3.默认欢迎界面修改
+在tomcat的配置文件conf中的web.xml中添加以下配置即可。
+
+
+<welcome-file-list>
+<welcome-file>sun.jpg</welcome-file>
+</welcome-file-list>
+
+
+
+二：Tomcat是如何处理请求的
+
+当前服务器使用的是 当前协议的默认端口号，对于http协议来说，默认端口号是80，
+
+配置了一个名字为空的应用，该应用指向的路径即应用路径为D:\WangDao\tomcattest
+
+在这个应用中依次按照welcome-file中的设置，一个一个在当前应用下去查找文件是否存在，首先查找新添加的sun.jpg图片，index.html、index.htm、index.jsp如果查找到，则结束，
