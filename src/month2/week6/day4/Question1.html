@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--    1 使用重写display属性或者浮动 实现页面(如图作业文件夹'图2.png')-->
+        <!--    提示: iframe, a标签-->
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            a {
+                text-decoration: none;
+                display: block;
+            }
+
+            iframe {
+                margin-left: 10px;
+                width: 800px;
+                height: 500px;
+            }
+
+            .div1 {
+                width: 100px;
+                height: 400px;
+                float: left;
+                padding-top: 50px;
+                padding-left: 50px;
+                padding-right: 50px;
+                border: 1px solid black;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="div1">
+            <a href="http://baidu.com" target="aaaa"> 首页</a>
+            <hr>
+            <a href="http://baidu.com" target="aaaa"> 百度</a>
+            <hr>
+            <a href="https://www.taobao.com" target="aaaa"> 淘宝</a>
+            <hr>
+            <a href="https://www.jd.com" target="aaaa"> 京东</a>
+            <hr>
+        </div>
+
+
+        <iframe name="aaaa">
+
+        </iframe>
+
+    </body>
+</html>
