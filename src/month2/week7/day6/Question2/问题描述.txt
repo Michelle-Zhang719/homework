@@ -1,0 +1,7 @@
+﻿用JDBC的事务完成一些完整操作
+
+( 可以选择:  转账案例  
+
+​           or 修改班级id案例class/students表 
+
+​            or 修改用户id案例  students_detail/students/script表)
