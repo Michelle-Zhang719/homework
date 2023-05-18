@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射空间设定 -->
+<mapper namespace="com.fast.www.mapper.UserMapper">
+
+    <insert id="addUser" parameterType="com.fast.www.domain.User">
+        insert into user (username,password,imageurl) values (#{user.username},#{user.password},#{user.imageurl})
+    </insert>
+    <select id="selectUser" resultType="com.fast.www.domain.User">
+        select * from user where username = #{username} and password = #{password}
+    </select>
+
+</mapper>
